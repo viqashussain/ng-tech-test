@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+
+    <input class="col-md-12 mb-3" [ngModel]="searchTerm" placeholder="search" (ngModelChange)="searchFoodItems($event)" />
+    <hr />
+
+    <div class="card col-md-4">
+      <div class="card-body">
+        <h5 class="card-title">All food items</h5>
+        <p>Display a list of all the food items retrieved from the api here.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let foodItem of allFoodItems$ | async">
+          <span>
+            {{foodItem.name}}
+          </span>
+
+          <span class="float-right">
+            £{{foodItem.price}}
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card col-md-4">
+      <div class="card-body">
+        <h5 class="card-title">Vegetarian items</h5>
+        <p>Display a list of all the food items where isVegetarian is true here.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let foodItem of vegetarianFoodItems$ | async">
+          <span>
+            {{foodItem.name}}
+          </span>
+
+          <span class="float-right">
+            £{{foodItem.price}}
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card col-md-4">
+      <div class="card-body">
+        <h5 class="card-title">Vegan items</h5>
+        <p>Display a list of all the food items where isVegan is true here.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let foodItem of veganFoodItems$ | async">
+          <span>
+            {{foodItem.name}}
+          </span>
+
+          <span class="float-right">
+            £{{foodItem.price}}
+          </span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
